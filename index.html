@@ -1,13 +1,205 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Jasper Observatory</title>
+<meta charset="UTF-8">
+<title>JasWave</title>
+
+<style>
+
+/* ===== 全局样式 ===== */
+
+body {
+    margin: 0;
+    font-family: "Arial Black", Arial, sans-serif;
+    color: white;
+    background: radial-gradient(circle at top, #1b1f3a, #000000 70%);
+}
+
+/* ===== 主页区域 ===== */
+
+.section {
+    padding: 60px 15%;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: normal;
+    margin-top: 0;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #555;
+    margin: 40px 0;
+}
+
+/* 图片 + 文字模板 */
+
+.work {
+    margin-bottom: 60px;
+}
+
+.work img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 15px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.work p {
+    font-style: italic;
+    color: #ccc;
+}
+
+/* ===== 菜单按钮 ===== */
+
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* ===== 侧边栏 ===== */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 260px;
+    height: 100%;
+    background: linear-gradient(180deg, #111428, #000000);
+    padding: 40px 20px;
+    transition: 0.4s;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 20px 0;
+    font-size: 18px;
+}
+
+.sidebar a:hover {
+    color: #6c8cff;
+}
+
+.close-btn {
+    font-size: 24px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+/* ===== About / Contact 页面 ===== */
+
+.hidden-section {
+    display: none;
+    padding: 80px 15%;
+}
+
+.back-btn {
+    margin-bottom: 30px;
+    cursor: pointer;
+    color: #6c8cff;
+}
+
+</style>
 </head>
-<body style="background:black; color:white; text-align:center;">
 
-    <h1>🌌 Jasper Observatory</h1>
+<body>
 
-    <img src="25d4d692ebf9c1b241882901b4b81bf8.jpeg" width="500">
+<!-- 三道杠菜单按钮 -->
+<div class="menu-btn" onclick="openMenu()">☰</div>
+
+<!-- 侧边栏 -->
+<div class="sidebar" id="sidebar">
+    <div class="close-btn" onclick="closeMenu()">✕</div>
+    <a href="#" onclick="showHome()">Home</a>
+    <a href="#" onclick="showAbout()">About Me</a>
+    <a href="#" onclick="showContact()">Contact</a>
+</div>
+
+<!-- ===== 主页 ===== -->
+<div class="section" id="home">
+
+    <h1>Welcome to JasWave!</h1>
+    <h2>Astronomical Works by Two Teenage Astronomers, Jasper and his friend Dragon</h2>
+
+    <hr>
+
+    <!-- 作品模板1 -->
+    <div class="work">
+        <img src="your-image1.jpg">
+        <p>Write your italic description here...</p>
+    </div>
+
+    <!-- 作品模板2（复制这个块即可添加更多） -->
+    <div class="work">
+        <img src="your-image2.jpg">
+        <p>Another description here...</p>
+    </div>
+
+</div>
+
+<!-- ===== About Me ===== -->
+<div class="hidden-section" id="about">
+    <div class="back-btn" onclick="showHome()">← Back to Home</div>
+    <h1>About Me</h1>
+    <p>You can write your story here later.</p>
+</div>
+
+<!-- ===== Contact ===== -->
+<div class="hidden-section" id="contact">
+    <div class="back-btn" onclick="showHome()">← Back to Home</div>
+    <h1>Contact</h1>
+    <p>Email: your-email@example.com</p>
+</div>
+
+<script>
+
+/* 打开侧边栏 */
+function openMenu() {
+    document.getElementById("sidebar").style.left = "0";
+}
+
+/* 关闭侧边栏 */
+function closeMenu() {
+    document.getElementById("sidebar").style.left = "-300px";
+}
+
+/* 页面切换 */
+function showHome() {
+    document.getElementById("home").style.display = "block";
+    document.getElementById("about").style.display = "none";
+    document.getElementById("contact").style.display = "none";
+    closeMenu();
+}
+
+function showAbout() {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("about").style.display = "block";
+    document.getElementById("contact").style.display = "none";
+    closeMenu();
+}
+
+function showContact() {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("about").style.display = "none";
+    document.getElementById("contact").style.display = "block";
+    closeMenu();
+}
+
+</script>
 
 </body>
 </html>
